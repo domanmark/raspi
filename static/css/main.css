@@ -1,0 +1,10 @@
+body {
+ background-image: url("stream.jpg");
+ background-repeat: no-repeat;
+ background-size: cover;
+}
+
+h1 {
+ color: #ffffff;
+ font-size: 50px;
+}

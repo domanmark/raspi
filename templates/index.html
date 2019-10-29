@@ -1,20 +1,40 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
+function getWeather(){
+ $.ajax({
+  url: 'weather',
+  type: 'get',
+  success: function(response){
+  document.getElementById('temp').innerHTML = response;
+  }
+ });
+}
+
 $(document).ready(function(){
-  $("button").click(function(){
-    $.get("demo_test.asp", function(data, status){
-      alert("Data: " + data + "\nStatus: " + status);
-    });
-  });
+ setInterval(getWeather,5000);
+});
+
+function getTimeToWork(){
+ $.ajax({
+  url: 'directions',
+  type: 'get',
+  success: function(response){
+  document.getElementById('worktime').innerHTML = response;
+  }
+ });
+}
+
+$(document).ready(function(){
+ setInterval(getTimeToWork,50000);
 });
 </script>
 </head>
 <body>
-
-<button>Send an HTTP GET request to a page and get the result back</button>
-
+    <h1 id="temp"></h1>
+    <h1 id="worktime"></h1>
 </body>
 </html>
