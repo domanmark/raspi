@@ -14,10 +14,6 @@ function getWeather(){
  });
 }
 
-$(document).ready(function(){
- setInterval(getWeather,5000);
-});
-
 function getTimeToWork(){
  $.ajax({
   url: 'directions',
@@ -31,10 +27,26 @@ function getTimeToWork(){
 $(document).ready(function(){
  setInterval(getTimeToWork,50000);
 });
+
+function getNews(){
+ $.ajax({
+  url: 'news',
+  type: 'get',
+  success: function(response){
+  document.getElementById('news').innerHTML = response;
+  }
+ });
+}
+
+$(document).ready(function(){
+ setInterval(getNews,5000);
+});
+
 </script>
 </head>
 <body>
     <h1 id="temp"></h1>
     <h1 id="worktime"></h1>
+    <h1 id="news"></h1>
 </body>
 </html>
